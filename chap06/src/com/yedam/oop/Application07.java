@@ -32,17 +32,33 @@ public class Application07 {
 			}else if(selectNo == 2) {
 				pctAry = new Product[pctNum];
 				for(int i =0; i<pctAry.length; i++) {
-					System.out.println("상품 이름>");
+					pctAry[i] = new Product();
+					System.out.println("상품명>");
 					pctAry[i].name=sc.nextLine();
 					System.out.println("상품 가격>");
 					pctAry[i].price=Integer.parseInt(sc.nextLine());
 				}
 			}else if(selectNo == 3) {
-				
+				for(int i =0; i<pctAry.length; i++) {
+					pctAry[i].getInfo();
+					
+					System.out.println();
+				}
 			}else if(selectNo == 4) {
+				int sum=0;
+				int max=pctAry[0].price;
+				for(int i =0; i<pctAry.length; i++) {
+					if(max < pctAry[i].price) {
+						max = pctAry[i].price;
+					}	
+					sum +=pctAry[i].price;
+				}
 				
+				System.out.println(max);
+				System.out.println(sum-max);
 			}else if(selectNo == 5) {
-				
+				System.out.println("프로그램 종료");
+				break;
 			}
 		
 		
