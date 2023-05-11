@@ -5,7 +5,7 @@ public class Book {
 	//책이름, 책종류, 가격, 도서번호, 출판사
 	String name;
 	String kind;
-	int price;
+	String price;
 	String bookNo;
 	String publisher;
 	//생성자는 2개
@@ -14,7 +14,7 @@ public class Book {
 		
 	}
 	//모든 데이터를 받아오는 생성자
-	Book(String name, String kind, int price, String bookNo, String publisher){
+	Book(String name, String kind, String price, String bookNo, String publisher){
 		this.name = name;
 		this.kind = kind;
 		this.price = price;
