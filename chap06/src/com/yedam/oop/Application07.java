@@ -46,16 +46,24 @@ public class Application07 {
 				}
 			}else if(selectNo == 4) {
 				int sum=0;
+				int temp =0;
 				int max=pctAry[0].price;
 				for(int i =0; i<pctAry.length; i++) {
 					if(max < pctAry[i].price) {
 						max = pctAry[i].price;
+						temp =i;
+					}					
+					
+				}
+				for(int i =0; i<pctAry.length; i++) {
+					if(max != pctAry[i].price) {						
+						sum +=pctAry[i].price;
 					}	
-					sum +=pctAry[i].price;
+										
 				}
 				
-				System.out.println(max);
-				System.out.println(sum-max);
+				System.out.println("상품명 "+pctAry[temp].name+" 최대값 "+max);
+				System.out.println("최대값 제외한 총합 : "+sum);
 			}else if(selectNo == 5) {
 				System.out.println("프로그램 종료");
 				break;
