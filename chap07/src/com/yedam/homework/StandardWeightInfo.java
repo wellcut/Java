@@ -14,11 +14,11 @@ public class StandardWeightInfo extends Human{
 	}
 
 	public void getInformation() {
-		System.out.println("이름 : " + name + " 키 : " + height + "몸무게 : " + weight);
+		System.out.println("이름 : " + name + " 키 : " + height + "몸무게 : " + weight + " 표준체중 : " + getStandardWeight());
 	}
 	
 	public double getStandardWeight() {
-		System.out.println("표준 체중 구하는 기능");
-		return (height-100) * 0.9;
+		
+		return (height-100)*0.9;
 	}
 }

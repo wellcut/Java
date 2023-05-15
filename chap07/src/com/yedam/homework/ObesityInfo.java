@@ -1,7 +1,6 @@
 package com.yedam.homework;
 
 public class ObesityInfo extends StandardWeightInfo {
-
 	//3) ObesityInfo 클래스를 정의한다.
 	//- StandardWeightInfo 클래스를 상속한다.
 	//- 메소드는 다음과 같이 정의한다.
@@ -13,10 +12,10 @@ public class ObesityInfo extends StandardWeightInfo {
 	ObesityInfo(String name, int height, int weight) {
 		super(name, height, weight);
 	}
-	public void getInformation() {
-		System.out.println("이름 : " + name + " 키 : " + height + "몸무게 : " + weight + "비만도 : " + (weight-super.getStandardWeight())/super.getStandardWeight()*100);
-	}
 	
+	
+	int obesity = (int)getObesity();
+		
 	public double getObesity() {
 		if((weight-super.getStandardWeight())/super.getStandardWeight()*100>=25.0) {
 			return 1;
@@ -25,10 +24,25 @@ public class ObesityInfo extends StandardWeightInfo {
 		}else if((weight-super.getStandardWeight())/super.getStandardWeight()*100>=18.5){
 			return 3;
 		}else {
-			System.out.println("저체중");
+			
 			return 4;
 		}
-		
+	}
+	public void getInformation() {
+		switch(obesity) {
+		case 1:
+			System.out.println("이름 : " + name + " 키 : " + height + "몸무게 : " + weight + " 비만입니다. ");
+			break;
+		case 2:
+			System.out.println("이름 : " + name + " 키 : " + height + "몸무게 : " + weight + " 비만입니다. ");
+			break;
+		case 3:
+			System.out.println("이름 : " + name + " 키 : " + height + "몸무게 : " + weight + " 비만입니다. ");
+			break;
+		case 4:
+		System.out.println("이름 : " + name + " 키 : " + height + "몸무게 : " + weight + " 비만입니다. ");
+		break;
+		}
 	}
 
 }
