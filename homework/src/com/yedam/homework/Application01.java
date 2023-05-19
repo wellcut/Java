@@ -17,10 +17,10 @@ public class Application01 {
 		 현재 실행코드와 실행결과를 참고하여 StringGame 클래스를 완성하세요.
 		 */
 		Scanner sc = new Scanner(System.in);
-		String[] data = {"Orange", "Game", "Phone", "Smart"};
-		boolean run = true;
-		StringGame game = new StringGame();
 		
+		boolean run = true;
+		//StringGame game = new StringGame();
+		StringGame2 game = new StringGame2();
 		
 		while(run) {
 			System.out.println("---------------------------------------------");
@@ -30,18 +30,18 @@ public class Application01 {
 			
 			switch(menu) {
 			case 1:
-				System.out.println("입력 값>>");
-				String input = sc.next();
-				game.setCharData(input);
+
+				game.setCharData();
 				break;
 			case 2:
 				game.setStrData();
 				break;
 			case 3:
-				game.showCharData();
+				game.showStrData();
 				break;
 			case 4:
 				game.init();
+			
 				break;
 			case 5:
 				run = false;
