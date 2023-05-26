@@ -24,32 +24,27 @@ public abstract class Culture {
 	}
 	 public void setTotalScore(int score) {
 		 
-		
+		 while(score != attendNo) {
 			 ++attendNo;
-			 totalScore += score;
-		
-		
+			 totalScore = score + attendNo ;
+		 }
+		 System.out.println("영화 총점 : "+totalScore);
 	 }
 	 String result="";
 	 public String getGrade() {
-		 switch(totalScore/attendNo) {
-		 case 5:
-			 result = "☆☆☆☆☆";
-			 break;
-		 case 4:
-			 result = "☆☆☆☆";
-			 break;
-		 case 3:
-			 result = "☆☆☆";
-			 break;
-		 case 2:
-			 result = "☆☆";
-			 break;
-		 case 1:
-			 result = "☆";
-			 break;
-		 }
-			
+		if(totalScore > 20) {
+			result = "☆☆☆☆☆";
+		}else if(totalScore > 15) {
+			result = "☆☆☆☆";
+		}else if(totalScore >10) {
+			result = "☆☆☆";
+		}else if(totalScore >5){
+			result = "☆☆";
+		}else {
+			result = "☆";
+		}
+		
+		System.out.println("영화평점 : " + result);
 		return result;
 		
 		 
@@ -57,3 +52,4 @@ public abstract class Culture {
 	 public abstract void getInformation();
 
 }
+
