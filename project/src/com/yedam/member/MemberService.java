@@ -7,6 +7,7 @@ import com.yedam.cart.CartService;
 import com.yedam.exe.Application;
 import com.yedam.inter.Inter;
 import com.yedam.inter.InterDAO;
+import com.yedam.inter.InterService;
 import com.yedam.post.Post;
 import com.yedam.post.PostDAO;
 import com.yedam.post.postService;
@@ -17,6 +18,7 @@ public class MemberService {
 	Scanner sc = new Scanner(System.in);
 	//회원가입
 	CartService cs = new CartService();
+	InterService is = new InterService();
 	public void insertMember() {
 		System.out.println("==========회원 가입 페이지=========");
 		String id ="";
@@ -130,6 +132,7 @@ public class MemberService {
 	public void memberModify() {
 		Member member = new Member();
 		member.setMemberId(MemberService.memberInfo.getMemberId());
+		String inter ="";
 		System.out.println("수정할 번호 입력");
 		System.out.println("1. PW | 2. 연락처 | 3. 관심분야 | 4. 회원 탈퇴");
 		int modNo = Integer.parseInt(sc.nextLine());
@@ -142,7 +145,21 @@ public class MemberService {
 			member.setMemberTel(sc.nextLine());
 		}else if(modNo==3) {
 			System.out.println("관심분야를 변경합니다");
-			member.setMemberInter(sc.nextLine());
+			while(true) {
+				System.out.println("====================================");
+				System.out.println("빅데이터, 클라우드, 프론트엔드, 백엔드, 정보보안");
+				System.out.println("Inter>");
+				inter = sc.nextLine();
+				Inter inter2 = new Inter();
+				 inter2 = InterDAO.getInstance().interList(inter);
+				if(inter2 !=null) {		
+					member.setMemberInter(inter);
+					break;
+				}else {
+					System.out.println("존재하지 않는 분야 입니다");
+				}
+			
+			}
 		}
 		else if(modNo==4) {
 			memberDelete2();
@@ -234,7 +251,6 @@ public class MemberService {
 		}
 	
 		
-		int result = MemberDAO.getInstance().authModify(id, auth);
 	
 		
 	}

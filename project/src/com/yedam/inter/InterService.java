@@ -1,6 +1,6 @@
 package com.yedam.inter;
 
-import java.util.List;
+
 import java.util.Scanner;
 
 public class InterService {
@@ -13,7 +13,7 @@ public class InterService {
 		System.out.println("======전달사항 전송======");
 		while(true) {	
 			System.out.println("빅데이터, 클라우드, 프론트엔드, 백엔드, 정보보안");
-			System.out.println("관심뷴야>");
+			System.out.println("관심분야>");
 			name=sc.nextLine();
 			inter = InterDAO.getInstance().interList(name);
 			if(inter !=null) {
@@ -36,7 +36,7 @@ public class InterService {
 		}
 	
 	}
-	
+
 	
 
 	

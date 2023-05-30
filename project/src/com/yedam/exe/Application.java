@@ -18,13 +18,12 @@ public class Application {
 		while(true) {
 			if(MemberService.memberInfo == null) {
 				System.out.println(" 1. 로그인 | 2. 회원가입 | 3.종료");
-				int menu = Integer.parseInt(sc.nextLine());
-				
-				if(menu == 1 ) {
+				String menu = sc.nextLine();
+				if(menu .equals("1")) {
 					ms.login();
-				}else if(menu == 2) {
+				}else if(menu.equals("2")) {
 					ms.insertMember();
-				}else if (menu == 3) {
+				}else if (menu.equals("3")) {
 					System.out.println("종료");
 					break;
 				}else {

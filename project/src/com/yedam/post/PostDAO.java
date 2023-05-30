@@ -188,12 +188,13 @@ public class PostDAO extends DAO{
 		Post post = null;
 		try {
 			conn();
-			String sql = "SELECT post_no, post_title, post_content FROM posts WHERE post_id=? ORDER BY post_no";
+			String sql = "SELECT post_no, post_title, post_content, post_id FROM posts WHERE post_id=? ORDER BY post_no";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				post = new Post();
+				post.setPostId(id);
 				post.setPostNo(rs.getInt("post_no"));
 				post.setPostTitle(rs.getString("post_title"));
 				post.setPostContent(rs.getString("post_content"));

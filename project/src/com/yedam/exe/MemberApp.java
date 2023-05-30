@@ -21,28 +21,27 @@ public class MemberApp {
 		
 		while(true) {
 			menu();
-			int menuNo = Integer.parseInt(sc.nextLine());
-			if(menuNo==1) {
+			String menuNo = sc.nextLine();
+		
+			if(menuNo.equals("1")) {
 				ms.memberInfo2();
-			}else if(menuNo==2) {
+			}else if(menuNo.equals("2")) {
 				ms.memberModify();
-			}else if(menuNo==3) {
+			}else if(menuNo.equals("3")) {
 				ps.insertPost();
-			}else if(menuNo==4) {
+			}else if(menuNo.equals("4")) {
 				ps.listPost();
 				
-			}else if(menuNo==5) {
+			}else if(menuNo.equals("5")) {
 				ps.modifyListPost();
-			}else if(menuNo==6) {
+			}else if(menuNo.equals("6")) {
 				ps2.pctList();
 				cs.pctBuy();
-			}else if(menuNo==7) {
+			}else if(menuNo.equals("7")) {
 				ms.logOut();
 				break;
-			}else if(menuNo ==8) {
-				ms.memberDelete2();
-				MemberService.memberInfo=null;
-				break;
+			}else {
+				System.out.println("다시 입력하세요");
 			}
 		}
 	}

@@ -3,6 +3,7 @@ package com.yedam.product;
 import java.util.List;
 import java.util.Scanner;
 
+
 public class ProductService {
 	//상품 등록
 	Scanner sc = new Scanner(System.in);
@@ -34,33 +35,51 @@ public class ProductService {
 	//상품 수정
 	public void pctModify() {
 		Product pct = new Product();
-		System.out.println("======상품 수정======");
-		System.out.println("수정 삭제할 상품명>");
-		pct.setPctName(sc.nextLine());
-		System.out.println("1. 상품 가격 | 2. 상품 설명 | 3.상품 수량 | 4.상품 삭제");
-		int no = Integer.parseInt(sc.nextLine());
-		
-		if(no == 1) {
-			System.out.println("상품 가격>");
-			pct.setPctPrice(Integer.parseInt(sc.nextLine()));			
-		}else if(no ==2 ) {
-			System.out.println("상품 설명>");
-			pct.setPctExplain(sc.nextLine());
-		}else if(no == 3) {
-			System.out.println("상품 수량>");
-			pct.setPctQuantity(Integer.parseInt(sc.nextLine()));
-		}else if(no == 4) {
-			System.out.println("삭제할 상품명>");
-			System.out.println(pct.getPctName());
-			
-		}else {
-			System.out.println("번호를 다시 입력하세요");
-		}
-		int result = ProductDAO.getInstance().pctModify(pct, no);
-		if(result > 0) {
-			System.out.println("상품 수정 성공");		
-		}else {
-			System.out.println("상품 수정 실패");
+		pctList();
+		List<Product> pctList = ProductDAO.getInstance().pctList();
+		boolean run = true;
+		while(run) {
+			boolean isContain = false;
+			System.out.println("수정 삭제할 상품명>");
+			String pctName = sc.nextLine();
+			for(int i = 0; i<pctList.size(); i++) {
+				if(pctList.get(i).getPctName().equals(pctName)) {	
+					pct.setPctName(pctName);
+					
+					System.out.println("1. 상품 가격 | 2. 상품 설명 | 3.상품 수량 | 4.상품 삭제");
+					int no = Integer.parseInt(sc.nextLine());
+					
+					if(no == 1) {
+						System.out.println("상품 가격>");
+						pct.setPctPrice(Integer.parseInt(sc.nextLine()));			
+					}else if(no ==2 ) {
+						System.out.println("상품 설명>");
+						pct.setPctExplain(sc.nextLine());
+					}else if(no == 3) {
+						System.out.println("상품 수량>");
+						pct.setPctQuantity(Integer.parseInt(sc.nextLine()));
+					}else if(no == 4) {
+						System.out.println("삭제할 상품명>");
+						System.out.println(pct.getPctName());
+						
+					}else {
+						System.out.println("번호를 다시 입력하세요");
+					}
+					int result = ProductDAO.getInstance().pctModify(pct, no);
+					if(result > 0) {
+						System.out.println("상품 수정 성공");		
+					}else {
+						System.out.println("상품 수정 실패");
+					}
+					isContain = true;
+					run = false;
+					break;
+				}
+			}
+			if(isContain == false) {
+				System.out.println("존재하지 않는 상품입니다");
+				
+			}
 		}
 		
 	}

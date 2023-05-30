@@ -58,6 +58,6 @@ public class AdminApp {
 
 	private void menu() {
 		// TODO Auto-generated method stub
-		System.out.println("1. 회원 권한 부여 | 2. 회원 삭제 | 3.관심분야별 회원에게 전달사항 보내기 | 4.게시물 삭제 | 5. 상품 등록 | 6.상품 수정 삭제 | 7. 로그아웃");
+		System.out.println("1. 회원 권한 부여 | 2. 회원 삭제 | 3.관심분야별 회원에게 전달사항 보내기 | 4. 게시판 삭제 | 5. 상품 등록 | 6.상품 수정 삭제 | 7. 로그아웃");
 	}
 }

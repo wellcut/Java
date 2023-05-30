@@ -30,6 +30,7 @@ public class CartDAO extends DAO{
 		int pctQuantity = 0;
 		int pctPrice = 0;
 		int memberPoint = 0;
+				
 		try {
 			conn();
 			String sql = "INSERT INTO cart (cart_id, pct_name, member_id, pct_quantity) VALUES((SELECT nvl(max(cart_id),0)+1 FROM cart), ?, ?, ?) ";
@@ -51,7 +52,8 @@ public class CartDAO extends DAO{
 				}
 			}
 			
-			if(pctQuantity > 0) {
+			if(pctQuantity > 0 && pctQuantity >= cart.getPctQuantity()) {
+				
 				if(memberPoint >= pctPrice*cart.getPctQuantity()) {
 					String sql3 = "UPDATE member SET pct_name = ? , member_point = member_point - ? WHERE member_id = ?";
 					pstmt = conn.prepareStatement(sql3);
@@ -65,14 +67,14 @@ public class CartDAO extends DAO{
 					pstmt.setInt(1, cart.getPctQuantity());
 					pstmt.setString(2, cart.getPctName());
 					result = pstmt.executeUpdate();
-					System.out.println(pctPrice*cart.getPctQuantity());
+					System.out.println("가격 : "+pctPrice*cart.getPctQuantity()+"포인트");
 					System.out.println("구매 성공");
 				}else {
 					System.out.println("포인트가 부족합니다");
 				}				
 			}else {
 				System.out.println("상품 수량이 부족합니다.");
-		
+				
 			}
 		}catch (Exception e) {
 			// TODO: handle exception

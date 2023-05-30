@@ -58,7 +58,7 @@ public class ProductDAO extends DAO {
 				pstmt.setString(2, pct.getPctName());
 				result = pstmt.executeUpdate();
 			}else if(no == 2) {
-				sql = "UPDATE product SETpct_explain = ? where pct_name =?  ";
+				sql = "UPDATE product SET pct_explain = ? where pct_name =?  ";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, pct.getPctExplain());
 				pstmt.setString(2, pct.getPctName());
@@ -113,40 +113,5 @@ public class ProductDAO extends DAO {
 		return list;
 	}
 	
-	//상품 구매
-//	public int pctBuy(Product pct, String id ) {
-//		int result = 0;
-//		try {
-//			conn();
-//			String sql = "SELECT member_point FROM member WHERE member_id = ?";
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setString(1, id);
-//			rs = pstmt.executeQuery();
-//			int point = 0;
-//			while(rs.next()) {
-//				point = rs.getInt("member_point");
-//			}
-//			if(pct.getPctQuantity()>0) {
-//				if(point >= pct.getPctPrice()) {
-//					String sql2 = "UPDATE member SET pct_name = ? WHERE member_id = ?";
-//					pstmt = conn.prepareStatement(sql2);
-//					pstmt.setString(1, pct.getPctName());
-//					pstmt.setString(2, id);
-//				}else {
-//					sql = null;
-//				}				
-//			}else {
-//				System.out.println("상품 수량이 부족합니다.");
-//			}
-//					
-//		}catch (Exception e) {
-//			// TODO: handle exception
-//			e.printStackTrace();
-//		}finally {
-//			disconn();
-//		}	
-//		return result;
-//		
-//	}
-	
+
 }
