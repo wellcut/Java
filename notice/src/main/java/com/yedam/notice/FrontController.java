@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yedam.notice.command.NoticeList;
 import com.yedam.notice.common.Command;
 import com.yedam.notice.main.command.MainCommand;
+import com.yedam.notice.member.command.MemberList;
 
 /**
  * Servlet implementation class FrontController
@@ -35,6 +37,8 @@ public class FrontController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		// TODO 처음 시작될때 동작하는 메소드, 요청한 것을 담아 두는 곳
 		map.put("/main.do", new MainCommand()); //처음 들어오는 페이지를 돌려준다
+		map.put("/noticeList.do", new NoticeList());
+		map.put("/memberList.do", new MemberList());
 	}
 
 	/**
